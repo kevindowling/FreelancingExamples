@@ -4,7 +4,7 @@ This guide explains how a program reads information from an Excel sheet and crea
 
 ## Overview
 - **What it does**: The program reads each row of information from an Excel sheet and creates a separate PDF file for each row.
-- **Libraries Used**: The program uses special tools (libraries) to read Excel files and create PDF files. These are `openpyxl` for Excel files and `reportlab` for PDF files.
+- **How it Works**: The program uses special tools to read Excel files and create PDF files.
 
 ## How it Works
 1. **Opening the Excel File**: The program opens the Excel file and looks at the active sheet (the sheet that is open when the file is opened).
@@ -14,10 +14,10 @@ This guide explains how a program reads information from an Excel sheet and crea
 5. **Creating PDFs**: The program creates a new PDF file for each row and writes a thank-you message to the customer using the extracted information.
 6. **Saving PDFs**: Finally, the program saves each PDF file with the customer's name as part of the file name.
 
-## Steps to Run the Program
-1. **Install Necessary Tools**: Before running the program, special tools (libraries) need to be installed. This can be done by someone who knows how to run commands on the computer.
-2. **Provide Excel File**: The Excel file's location needs to be specified in the program.
-3. **Run the Program**: Once the above steps are done, the program can be run to create the PDF files.
+## Steps to Use the Program
+1. **Contact Kevin Dowling**: If you need to use this program, please contact Kevin Dowling at KevinDowling.Dev. He will send over an executable that you can run from your computer.
+2. **Provide Excel File**: You will need to have an Excel file with the information you want to convert to PDF.
+3. **Run the Executable**: Once you receive the executable from Kevin, you can run it, and it will create the PDF files for you.
 
 ## Note
-- This program needs to be set up and run by someone with a basic understanding of running Python scripts, but once it's set up, it can run automatically without needing any coding knowledge.
+- This program is designed to be user-friendly and does not require any coding knowledge or experience. Once you receive the executable from Kevin, you can easily run it to create PDF files from your Excel data.
