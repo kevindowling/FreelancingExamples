@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mockup App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+        }
+        header {
+            background: #50b3a2;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+        label, input, select, button {
+            display: block;
+            margin: 1em 0;
+            padding: 0.5em;
+            width: 100%;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mockup Web App</h1>
+        </header>
+        <form id="mockupForm">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="FullName" placeholder="Enter Full Name">
+            
+            <label for="emailAddress">Email Address</label>
+            <input type="text" id="emailAddress" name="EmailAddress" placeholder="Enter Email Address">
+            
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" id="phoneNumber" name="PhoneNumber" placeholder="Enter Phone Number">
+            
+            <label for="size">Size</label>
+            <select id="size" name="Size">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select>
+            
+            <label for="color">Color</label>
+            <select id="color" name="Color">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+            </select>
+            
+            <label for="fruit">Fruit</label>
+            <select id="fruit" name="Fruit">
+                <option value="apple">Apple</option>
+                <option value="orange">Orange</option>
+                <option value="banana">Banana</option>
+            </select>
+            
+            <button type="button" onclick="exportData()">Export</button>
+        </form>
+    </div>
+    <script>
+        function exportData() {
+            var formElements = document.getElementById("mockupForm").elements;
+            var formData = '';
+            for (var i = 0; i < formElements.length; i++) {
+                var element = formElements[i];
+                if (element.type !== 'button') {
+                    formData += element.name + ': ';
+                    formData += element.type === 'select-one' ? element.options[element.selectedIndex].text : element.value;
+                    formData += '\n';
+                }
+            }
+            // Create a Blob with the form data and download it as a text file
+            var blob = new Blob([formData], { type: 'text/plain' });
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'exportedData.txt';
+            link.click();
+        }
+    </script>
+</body>
+</html>
