@@ -1,0 +1,83 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    width: 50%;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+label, input, button {
+    display: block;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+
+.screen {
+    display: none;
+}
+
+#processingScreen {
+    text-align: center;
+}
+
+#progressContainer {
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
+#progressBar {
+    width: 1%;
+    height: 30px;
+    background-color: #4CAF50;
+}
+
+#status {
+    margin-top: 20px;
+}
+
+#resultScreen {
+    text-align: center;
+}
+
+#downloadLink {
+    display: block;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+#downloadLink:hover {
+    background-color: #0056b3;
+}
+
+

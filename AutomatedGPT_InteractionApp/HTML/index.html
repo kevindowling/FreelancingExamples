@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Automated GPT Interaction App</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Automated GPT Interaction App</h1>
+        <p>Automate interaction with GPT to create articles based on uploaded commands and headlines.</p>
+        
+        <label for="commands">Upload Commands (TXT)</label>
+        <input type="file" id="commands" accept=".txt">
+        
+        <label for="headlines">Upload Headlines (CSV/TXT)</label>
+        <input type="file" id="headlines" accept=".csv,.txt">
+        
+        <label for="outputFileName">Enter Output File Name</label>
+        <input type="text" id="outputFileName" placeholder="Enter Output File Name…">
+        
+        <button onclick="startProcessing()">Start Processing</button>
+    </div>
+    
+    <div id="processingScreen" class="screen">
+        <h2>Processing...</h2>
+        <div id="progressContainer">
+            <div id="progressBar"></div>
+        </div>
+        <p id="status">Initializing...</p>
+    </div>
+
+    <div id="resultScreen" class="screen">
+        <h2>Processing Completed</h2>
+        <p id="resultStatus">The files have been processed successfully!</p>
+        <a href="#" id="downloadLink" download="output.txt">Download Result</a>
+        <button onclick="resetApp()">Start Over</button>
+    </div>
+    
+    <script src="../JS/app.js"></script>
+</body>
+</html>
+
+<!-- https://chat.openai.com/c/39afc6e0-ba0a-414f-bb0a-a2be76db55a3 -->
