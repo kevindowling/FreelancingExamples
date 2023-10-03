@@ -29,7 +29,7 @@ pip install argparse itertools random
 2. Navigate to the `RouletteSimLocal` directory.
 3. Run the simulation using the command line arguments as explained below.
 
-### usage: 
+### Usage: 
 ``roulette.py [-h] -s STRATEGY -b BANKROLL -bet INITIAL_BET [-m MAX_SPINS] [-w WIN_LIMIT] [-seq [SEQUENCE [SEQUENCE ...]]]``
 
 ### optional arguments:
