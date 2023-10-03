@@ -31,14 +31,14 @@ pip install argparse itertools random
 
 usage: RouletteSimLocal.py [-h] -s STRATEGY -b BANKROLL -bet INITIAL_BET [-m MAX_SPINS] [-w WIN_LIMIT] [-seq [SEQUENCE [SEQUENCE ...]]]
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -s, --strategy STRATEGY  Name of the strategy to simulate (required)
-  -b, --bankroll BANKROLL  Initial bankroll (required)
-  -bet, --initial_bet INITIAL_BET  Initial bet amount (required)
-  -m, --max_spins MAX_SPINS  Maximum number of spins (default: 100)
-  -w, --win_limit WIN_LIMIT  Win limit for Reverse Martingale Strategy (default: 3)
-  -seq, --sequence [SEQUENCE [SEQUENCE ...]]  List of numbers for Labouchere System (default: [1,2,3])
+### optional arguments:
+*  -h, --help
+*  -s, --strategy STRATEGY  Name of the strategy to simulate (required)
+*  -b, --bankroll BANKROLL  Initial bankroll (required)
+*  -bet, --initial_bet INITIAL_BET  Initial bet amount (required)
+*  -m, --max_spins MAX_SPINS  Maximum number of spins (default: 100)
+*  -w, --win_limit WIN_LIMIT  Win limit for Reverse Martingale Strategy (default: 3)
+*  -seq, --sequence [SEQUENCE [SEQUENCE ...]]  List of numbers for Labouchere System (default: [1,2,3])
 
 
 ### Example Usage
