@@ -22,6 +22,7 @@ The CLI application allows users to simulate various betting strategies in a Rou
 
 ```bash
 pip install argparse itertools random
+```
 
 ### Running the Simulation
 1. Clone the repository to your local machine.
