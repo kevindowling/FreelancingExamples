@@ -29,20 +29,21 @@ pip install argparse itertools random
 2. Navigate to the `RouletteSimLocal` directory.
 3. Run the simulation using the command line arguments as explained below.
 
-usage: RouletteSimLocal.py [-h] -s STRATEGY -b BANKROLL -bet INITIAL_BET [-m MAX_SPINS] [-w WIN_LIMIT] [-seq [SEQUENCE [SEQUENCE ...]]]
+### usage: 
+roulette.py [-h] -s STRATEGY -b BANKROLL -bet INITIAL_BET [-m MAX_SPINS] [-w WIN_LIMIT] [-seq [SEQUENCE [SEQUENCE ...]]]
 
 ### optional arguments:
 *  -h, --help
-*  -s, --strategy STRATEGY  Name of the strategy to simulate (required)
-*  -b, --bankroll BANKROLL  Initial bankroll (required)
-*  -bet, --initial_bet INITIAL_BET  Initial bet amount (required)
-*  -m, --max_spins MAX_SPINS  Maximum number of spins (default: 100)
-*  -w, --win_limit WIN_LIMIT  Win limit for Reverse Martingale Strategy (default: 3)
-*  -seq, --sequence [SEQUENCE [SEQUENCE ...]]  List of numbers for Labouchere System (default: [1,2,3])
+*  -s, --strategy      | STRATEGY  Name of the strategy to simulate (required)
+*  -b, --bankroll      | BANKROLL  Initial bankroll (required)
+*  -bet, --initial_bet | INITIAL_BET  Initial bet amount (required)
+*  -m, --max_spins     | MAX_SPINS  Maximum number of spins (default: 100)
+*  -w, --win_limit     | WIN_LIMIT  Win limit for Reverse Martingale Strategy (default: 3)
+*  -seq, --sequence    | [SEQUENCE [SEQUENCE ...]]  List of numbers for Labouchere System (default: [1,2,3])
 
 
 ### Example Usage
-python RouletteSimLocal.py -s mart -b 1000 -bet 10
+```python roulette.py -s mart -b 1000 -bet 10```
 
 
 ### Contributing
