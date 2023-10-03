@@ -30,7 +30,7 @@ pip install argparse itertools random
 3. Run the simulation using the command line arguments as explained below.
 
 ### usage: 
-roulette.py [-h] -s STRATEGY -b BANKROLL -bet INITIAL_BET [-m MAX_SPINS] [-w WIN_LIMIT] [-seq [SEQUENCE [SEQUENCE ...]]]
+``roulette.py [-h] -s STRATEGY -b BANKROLL -bet INITIAL_BET [-m MAX_SPINS] [-w WIN_LIMIT] [-seq [SEQUENCE [SEQUENCE ...]]]``
 
 ### optional arguments:
 *  -h, --help
