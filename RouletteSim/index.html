@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Roulette Simulator</title>
+    <title>Roulette Strategy Simulator | Test & Optimize Your Tactics</title>
     <link rel="icon" type="image/x-icon" href="https://www.kevindowling.dev/images/icon2.svg">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="Discover the effectiveness of your Roulette strategies with our free simulator. Test, tweak, and optimize your tactics to improve your game and gain a winning edge.">
+    <meta property="og:title" content="Roulette Strategy Simulator" />
+    <meta property="og:description" content="How fast will you lose your money?" />
+    <meta property="og:image" content="https://roulette.kevindowling.dev/roulette-svgrepo-com.png" />
+    <meta property="og:url" content="https://roulette.kevindowling.dev" />
+    <meta property="og:type" content="website" />
     <link rel="stylesheet" href="main.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -31,20 +37,20 @@
             <label>Initial Bankroll:</label>
             <input type="number" name="bankroll" required>
         </div>
-        <div id="initial_bet">
+        <div class="formfield" id="initialbet">
             <label>Initial Bet:</label>
-            <input type="number" name="initial_bet" required>
+            <input type="number" name="initialbet" required>
         </div>
-        <div id="max_spins">
+        <div class="formfield" id="maxspins">
             <label>Max Spins:</label>
-            <input type="number" name="max_spins" value="100">
+            <input type="number" name="maxspins" value="100">
         </div>
-        <div id="win_limit">
-            <label>Win Limit (For Reverse Martingale):</label>
-            <input type="number" name="win_limit" value="3">  
+        <div class="formfield" id="winlimit">
+            <label>Win Limit:</label>
+            <input type="number" name="winlimit" value="3">  
         </div>
-        <div id="sequence">
-            <label>Sequence (For Labouchere, comma-separated):</label>
+        <div class="formfield" id="sequence">
+            <label>Sequence (Comma-separated):</label>
             <input type="text" name="sequence">
         </div>
         <div class="button-container">
@@ -76,24 +82,24 @@
                         // No additional fields to show
                         break;
                     case 'rev':
-                        document.getElementById('win_limit').style.display = 'block';
-                        document.getElementById('max_spins').style.display = 'block';
+                        document.getElementById('winlimit').style.display = 'flex';
+                        //document.getElementById('maxspins').style.display = 'flex';
                     case 'osca':
-                        document.getElementById('max_spins').style.display = 'block';
+                        //document.getElementById('maxspins').style.display = 'flex';
                         break;
                     case 'labo':
-                        document.getElementById('initial_bet').style.display = 'none';
-                        document.getElementById('sequence').style.display = 'block';
+                        document.getElementById('initialbet').style.display = 'none';
+                        document.getElementById('sequence').style.display = 'flex';
                         break;
                 }
             });
         });
 
         function hideAllOptionalFields() {
-            document.getElementById('initial_bet').style.display = 'block';
+            document.getElementById('initialbet').style.display = 'flex';
 
-            document.getElementById('win_limit').style.display = 'none';
-            document.getElementById('max_spins').style.display = 'none';
+            document.getElementById('winlimit').style.display = 'none';
+            //document.getElementById('maxspins').style.display = 'none';
             document.getElementById('sequence').style.display = 'none';
             // Add other fields/groups to hide as needed
         }
@@ -105,9 +111,9 @@
             const data = {
                 strategy: form.strategy.value,
                 bankroll: form.bankroll.valueAsNumber,
-                initial_bet: form.initial_bet.valueAsNumber,
-                max_spins: form.max_spins.valueAsNumber,
-                win_limit: form.win_limit.valueAsNumber
+                initialbet: form.initialbet.valueAsNumber,
+                maxspins: form.maxspins.valueAsNumber,
+                winlimit: form.winlimit.valueAsNumber
             };
             
             const sequence = form.sequence.value.split(',').map(Number);

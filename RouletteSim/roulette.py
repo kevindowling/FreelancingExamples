@@ -11,7 +11,7 @@ from logging.handlers import RotatingFileHandler
 # Define Strategy Functions
 
 
-def run_martingale_simulation(initial_bankroll, initial_bet):
+def run_martingale_simulation(initial_bankroll, initial_bet, max_spins):
     bankroll = initial_bankroll
     bet = initial_bet
     results = []
@@ -48,7 +48,7 @@ def run_reverse_martingale_simulation(initial_bankroll, initial_bet, win_limit, 
         spins += 1
     return results
 
-def run_dalembert_simulation(initial_bankroll, initial_bet):
+def run_dalembert_simulation(initial_bankroll, initial_bet, max_spins):
     bankroll = initial_bankroll
     bet = initial_bet
     results = []
@@ -63,7 +63,7 @@ def run_dalembert_simulation(initial_bankroll, initial_bet):
         results.append(bankroll)
     return results
 
-def run_labouchere_simulation(initial_bankroll, sequence):
+def run_labouchere_simulation(initial_bankroll, sequence, max_spins):
     # Log the sequence
     app.logger.warning(f"Ladouchere sequence received: {sequence}")
     bankroll = initial_bankroll
@@ -81,7 +81,7 @@ def run_labouchere_simulation(initial_bankroll, sequence):
         results.append(bankroll)
     return results
 
-def run_fibonacci_simulation(initial_bankroll, initial_bet):
+def run_fibonacci_simulation(initial_bankroll, initial_bet, max_spins):
     bankroll = initial_bankroll
     results = []
     fib_seq = [1, 1]
@@ -132,8 +132,11 @@ def run_oscars_grind_simulation(initial_bankroll, initial_bet, max_spins):
 
 # Define Simulation Spin
 def simulate_spin():
-    number = random.randint(0, 36)
+    number = random.randint(0, 37)  # 0 to 37 where 37 represents '00' in American roulette
+    if number == 0 or number == 37:
+        return 'green'
     return 'win' if number % 2 == 0 else 'loss'
+
 
 def run_simulation(strategy_func, *args, **kwargs):
     max_spins = kwargs.get('max_spins', 100)  # You can set a default value or manage it differently
@@ -153,7 +156,7 @@ def run_simulation(strategy_func, *args, **kwargs):
         if spin_count < max_spins:  # First 5 are always printed
             results.append({"spin_count": spin_count, "bankroll": bankroll})
         if spin_count == max_spins or bankroll <= 0 or peek is None:  # Last one is printed
-            results.append({"spin_count": spin_count, "bankroll": bankroll})
+            results.append({"Final": spin_count, "bankroll": bankroll})
         if bankroll <= 0 or spin_count == max_spins or peek is None:
             return results
 
@@ -184,9 +187,9 @@ def simulate():
     data = request.json
     strategy = data.get('strategy', '').lower()
     initial_bankroll = data.get('bankroll')
-    initial_bet = data.get('initial_bet')
-    max_spins = data.get('max_spins', 100)
-    win_limit = data.get('win_limit', 3)
+    initial_bet = data.get('initialbet')
+    max_spins = data.get('maxspins', 100)
+    win_limit = data.get('winlimit', 3)
     sequence = [int(x) for x in data.get('sequence', [])]
 
     
@@ -207,17 +210,17 @@ def simulate():
     # Running the selected strategy with the required parameters
     try:
         if strategy.startswith('mart'):
-            results = run_simulation(strategy_func, initial_bankroll, initial_bet)
+            results = run_simulation(strategy_func, initial_bankroll, initial_bet, max_spins=max_spins)
         elif strategy.startswith('rev'):
             results = run_simulation(strategy_func, initial_bankroll, initial_bet, win_limit, max_spins=max_spins)
         elif strategy.startswith('dale'):
-            results = run_simulation(strategy_func, initial_bankroll, initial_bet)
+            results = run_simulation(strategy_func, initial_bankroll, initial_bet, max_spins=max_spins)
         elif strategy.startswith('labo'):
             if not sequence:
                 return jsonify(error="Sequence is required for Labouchere System"), 400
-            results = run_simulation(strategy_func, initial_bankroll, sequence)
+            results = run_simulation(strategy_func, initial_bankroll, sequence, max_spins=max_spins)
         elif strategy.startswith('fibo'):
-            results = run_simulation(strategy_func, initial_bankroll, initial_bet)
+            results = run_simulation(strategy_func, initial_bankroll, initial_bet, max_spins=max_spins)
         elif strategy.startswith('osca'):
             results = run_simulation(strategy_func, initial_bankroll, initial_bet, max_spins=max_spins)
         else:
