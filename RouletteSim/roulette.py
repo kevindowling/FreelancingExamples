@@ -134,7 +134,7 @@ def run_oscars_grind_simulation(initial_bankroll, initial_bet, max_spins):
 def simulate_spin():
     number = random.randint(0, 37)  # 0 to 37 where 37 represents '00' in American roulette
     if number == 0 or number == 37:
-        return 'green'
+        return 'loss'
     return 'win' if number % 2 == 0 else 'loss'
 
 
