@@ -11,7 +11,7 @@ The primary objective of this program is to identify all instances where shapes/
 
 ## GUI Preview:
 
-![GUI Preview](GUI.png)
+![GUI Preview](https://github.com/kevindowling/FreelancingExamples/blob/main/PDF_SymbolCounter/GUI.PNG)
 
 ---
 
