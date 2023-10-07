@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 Sankey Alluvial Diagram</title>
+    <link rel="stylesheet" href="/AlluvialDiagram/sytle.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add Nodes and Links</h2>
+        <form id="sankey-form">
+            <h3>Nodes</h3>
+            <div id="nodes-container">
+                <div class="node-entry">
+                    <label>
+                        Node ID: <input type="text" name="node-id[]" required>
+                    </label>
+                    <label>
+                        Node Name: <input type="text" name="node-name[]" required>
+                    </label>
+                </div>
+            </div>
+            <button type="button" id="add-node">Add Node</button>
+            
+            <h3>Links</h3>
+            <div id="links-container">
+                <div class="link-entry">
+                    <label>
+                        Source ID: <input type="text" name="link-source[]" required>
+                    </label>
+                    <label>
+                        Target ID: <input type="text" name="link-target[]" required>
+                    </label>
+                    <label>
+                        Value: <input type="number" name="link-value[]" required>
+                    </label>
+                </div>
+            </div>
+            <button type="button" id="add-link">Add Link</button>
+            <button type="submit">Generate Diagram</button>
+            <!-- <button type="button" id="render-sankey">Render Sankey Diagram</button> -->
+
+        </form>
+    </div>
+    <!-- <div id="sankey-diagram"></div> -->
+
+
+    <svg width="800" height="600"></svg>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/d3-sankey@0.12.3"></script>
+    <script src="script.js"></script>
+</body>
+</html>
