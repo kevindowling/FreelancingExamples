@@ -38,17 +38,24 @@ def process_pdfs():
 
     global symbol_matches_map
     symbol_matches_map = ip.find_contour_matches(pdf1_images,pdf2_images, 0.5) #This assumes that all symbols from first file are unique
-
+    print("symbol_matches_map length after processing: ", len(symbol_matches_map))
     pass
 
 def download_processed_file():
     global symbol_matches_map
+    print("symbol_matches_map length at pdf download: ", len(symbol_matches_map))
+
+    print(len(symbol_matches_map))
+    pdf_output = ""
     if(len(symbol_matches_map) > 0):
-        
       pdf_output =  i2p.create_pdf_from_map()
+      print("PDF Output from i2p type: ", type(pdf_output))
+
 
     target_file = filedialog.asksaveasfilename(defaultextension=".pdf", filetypes=[("PDF files", "*.pdf")])
-    
+    if pdf_output == "":
+        return
+
     if not target_file:
         return  # The user canceled the dialog
     

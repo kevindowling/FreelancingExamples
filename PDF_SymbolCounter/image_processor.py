@@ -1,100 +1,66 @@
-from PIL import Image
 import cv2
 import numpy as np
+from pdf2image import convert_from_path
+from matplotlib import pyplot as plt
+
+# Step 1: PDF to Image Conversion
+def pdf_to_image_list(pdf_path):
+    images = convert_from_path(pdf_path)
+    return images
+
+#display the images from the pdf file
+def display_images(images):
+    for i, image in enumerate(images):
+        plt.figure()
+        plt.imshow(image)
+        plt.title(f'Page {i + 1}')
+        plt.axis('off')  # Hide axes
+        plt.show()
+
+# Step 2: Shape Detection
+def detect_shapes(image):
+    # Convert PIL Image to NumPy array
+    image_np = np.array(image)
+    # Convert image to grayscale
+    gray = cv2.cvtColor(image_np, cv2.COLOR_BGR2GRAY)
+    # Find contours
+    # apply binary thresholding
+    ret, thresh = cv2.threshold(gray, 235, 255, cv2.THRESH_BINARY)
+    # visualize the binary image
+    cv2.waitKey(0)
+    cv2.imwrite('image_thres1.jpg', thresh)
+    cv2.destroyAllWindows()
+    contours, _ = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    i = 0
+    contours_first_removed = []
+    for contour in contours: 
+        if(i == 0):
+            i += 1
+            continue
+
+        contours_first_removed.append(contour)
+        
 
 
-
-def process_image(pil_image):
-    print("processing image")
-    # Convert PIL Image to OpenCV format (numpy array)
-    img = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
-
-    # Convert the image to grayscale
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-    # Apply thresholding to segment the image
-    _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
-    # Noise removal using Morphological operations
-    kernel = np.ones((3, 3), np.uint8)
-    opening = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel, iterations=2)
-
-    # Identify sure background area
-    sure_bg = cv2.dilate(opening, kernel, iterations=3)
-
-    # Identifying sure foreground area
-    dist_transform = cv2.distanceTransform(opening, cv2.DIST_L2, 5)
-    _, sure_fg = cv2.threshold(dist_transform, 0.7 * dist_transform.max(), 255, 0)
+    return contours_first_removed
 
 
-    # Identify unknown region
-    sure_fg = np.uint8(sure_fg)
-    unknown = cv2.subtract(sure_bg, sure_fg)
+# Step 3: Shape Uniqueness Evaluation
+def evaluate_uniqueness(contours):
+    # Placeholder function. You'll need to implement your uniqueness heuristic
+    unique_contours = contours  # This is a stub. Replace with your logic.
+    return unique_contours
 
-    # Marker labelling
-    ret, markers = cv2.connectedComponents(sure_fg)
-
-    # Add 1 to all the labels to distinguish sure regions from unknown region
-    markers = markers + 1
-    markers[unknown == 255] = 0
-
-    # Apply watershed
-    cv2.watershed(img, markers)
-    img[markers == -1] = [0, 0, 255]
-
-    # Find contours after applying watershed
-    contours, _ = cv2.findContours(markers.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE) #Tuple
-
-    return contours
-
-def find_contour_matches(primary_images, secondary_images, similarity_threshold=0.05):
-    primary_contours = []
-    secondary_contours = []
-    for primary_image in primary_images:
-        primary_contours.extend(process_image(primary_image))
-    for secondary_image in secondary_images:
-        secondary_contours.extend(process_image(secondary_image))
-    
-    print("Num primary contours: ", len(primary_contours))
-    print("Num secondary contours: ", len(secondary_contours))
-    contour_matches = {}
-    primary_contour_index = 0
-    secondary_contour_index = 0
-    for primary_contour in primary_contours:
-        primary_contour_index += 1
-        print("Outerloop iteration: ", primary_contour_index)
-
-
-        for secondary_contour in secondary_contours:
-            secondary_contour_index += 1
-            print("Innerloop iteration: ", secondary_contour_index)
-
-    return contour_matches
-            #print("Making sure the data type is correct")
-            #primary_contour = primary_contour.astype(np.int32)
-            #secondary_contour = secondary_contour.astype(np.int32)
-"""             print("Primary contour dtype: ", primary_contour.dtype, "| Secondary contour dtype: ", secondary_contour.dtype)
-
-           
-            try:
-                #similarity = cv2.matchShapes(primary_contour, secondary_contour, cv2.CONTOURS_MATCH_I1, 0)
-                similarity = 0
-                print("Checking primary contour (", primary_contour_index, ") with secondary contour (", secondary_contour_index, ")")
-            except Exception as e:
-                print("Error:", e)
-                continue
-
-            print("Checking similarity agains threshold:")
-            # If the similarity is below the threshold, consider it a match
-            if similarity < similarity_threshold:
-                match_count += 1
-                print("Matched")
-            else:
-                print("Not a match") """
-
-
-        # Convert primary_contour to a tuple and use it as a key
-        #contour_key = tuple(primary_contour.reshape(-1).tolist())
-        #contour_matches[contour_key] = match_count
-
-
-
+# Step 4: Visualization
+def visualize_shapes(unique_contours):
+    for i, contour in enumerate(unique_contours):
+        # Get dimensions from the first image in your image list
+        width, height = images[0].size  # assuming images is a global variable or pass it as an argument
+        # Create a blank white image with the same dimensions as your original image
+        blank_image = np.ones((height, width, 3), dtype=np.uint8) * 255
+        # Draw each contour on the blank image with a thicker line
+        cv2.drawContours(blank_image, [contour], -1, (0,255,0), 10)  # changed line thickness to 10
+        plt.figure()
+        plt.imshow(cv2.cvtColor(blank_image, cv2.COLOR_BGR2RGB))
+        plt.title(f'Shape {i + 1}')
+        plt.show()
