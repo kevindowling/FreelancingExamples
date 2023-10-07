@@ -9,6 +9,12 @@ The primary objective of this program is to identify all instances where shapes/
 
 ---
 
+## GUI Preview:
+
+![GUI Preview](GUI.png)
+
+---
+
 ## Description:
 
 The PDF Shape Matcher is a project designed to process PDF files, extract symbols/shapes from them, and compare and match these shapes. The GUI provides an interactive way to drag-and-drop PDF files, process them, and download the resultant PDF with matched symbols.
