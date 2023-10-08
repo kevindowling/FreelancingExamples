@@ -84,8 +84,8 @@ document.getElementById("sankey-form").addEventListener("submit", function(event
 });
 
 
-document.getElementById("color-source").addEventListener("change", renderSankeyDiagram);
-document.getElementById("color-target").addEventListener("change", renderSankeyDiagram);
+
+
 
 function renderSankeyDiagram() {
     const svg = d3.select("svg");
@@ -93,6 +93,7 @@ function renderSankeyDiagram() {
 
     const width = +svg.attr("width");
     const height = +svg.attr("height");
+    
 
     const color = d3.scaleOrdinal(d3.schemePastel1);
 

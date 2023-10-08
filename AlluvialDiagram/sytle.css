@@ -1,26 +1,68 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    margin: 40px;
+    margin: 0;
+    padding: 40px;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 #sankey-diagram {
     width: 90%;
+    max-width: 1200px;
     height: 500px;
     margin: auto;
-    border: 1px solid #ccc;
+    border: 1px solid #e6e6e6;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-container {
-    margin-bottom: 30px;
+    margin: 0 auto 40px;  /* Centers the container */
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;  /* Adjust this value based on your form elements */
 }
 
 .node-entry, .link-entry {
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 button {
     margin: 10px;
-    padding: 5px 15px;
+    padding: 10px 20px;
     cursor: pointer;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+/* Media Queries */
+@media (max-width: 600px) {
+    body {
+        padding: 20px;
+    }
+
+    #sankey-diagram {
+        height: 300px;
+    }
+
+    .form-container {
+        margin-bottom: 20px;
+    }
+
+    button {
+        margin: 5px;
+        padding: 8px 16px;
+    }
 }
