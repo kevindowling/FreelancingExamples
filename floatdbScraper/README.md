@@ -1,41 +1,65 @@
-# Web Scraper with Selenium
 
-This program is a simple Python script that uses Selenium to scrape tables from web pages and writes the output to a CSV file. This particular implementation is set up to scrape a table from 'https://csfloat.com/db' but can be modified to scrape from any URL.
+# Web Table Scraper
 
-## Prerequisites
-
-- Python
-- Selenium
-- ChromeDriver Autoinstaller
-- Google Chrome Browser
+This repository contains a Python script that allows users to scrape tables from a specified URL using Selenium and then save the scraped data to a CSV file.
 
 ## Installation
 
-To run the script, you need to have Python installed on your machine. You can download it from [here](https://www.python.org/downloads/).
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yourusername/web-table-scraper.git
+   cd web-table-scraper
+   ```
 
-Once Python is installed, you can install the required libraries using pip:
+2. **Set Up a Virtual Environment** (optional but recommended):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   ```
 
-```sh
-pip install selenium chromedriver-autoinstaller
-```
+3. **Install the Required Packages**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
-1. Replace the `url` variable with the URL of the page you want to scrape.
-```python
-url = 'https://your_url.com'
-```
+1. **Run the Script**:
+   ```bash
+   python scraper.py
+   ```
 
-2. Run the script.
-```sh
-python scraper.py
-```
+2. **Input the URL**:
+   The script will prompt you to enter the URL of the page containing the tables you wish to scrape.
 
-3. The scraped data will be written to `output.csv` in the same directory as the script.
+3. **Check the Output**:
+   The scraped data will be saved in `output.csv` in the current directory.
 
-## Code Overview
+## Compilation to Executable
 
-- The script uses Selenium to instantiate a Chrome browser and navigate to the specified URL.
-- The table is located by its tag name, and the rows within the table are then located and iterated over.
-- The header (`th`) and data (`td`) of each row are extracted and written to the CSV file.
-- After processing all rows, the browser window is closed.
+If you'd like to compile the script into a standalone executable:
+
+1. **Install PyInstaller**:
+   ```bash
+   pip install pyinstaller
+   ```
+
+2. **Compile**:
+   ```bash
+   pyinstaller --onefile scraper.py
+   ```
+
+The resulting executable will be found in the `dist` directory.
+
+## Dependencies
+
+- Selenium
+- ChromeDriver Autoinstaller
+
+## Contribution
+
+Feel free to fork the repository and submit pull requests. All contributions are welcome!
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
