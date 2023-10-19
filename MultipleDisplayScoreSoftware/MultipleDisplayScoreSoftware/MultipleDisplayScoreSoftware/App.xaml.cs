@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
+
 
 namespace MultipleDisplayScoreSoftware
 {
@@ -33,9 +33,11 @@ namespace MultipleDisplayScoreSoftware
         protected override void OnStartup(StartupEventArgs e)
         {
             var screenManager = _host.Services.GetRequiredService<IScreenManager>();
+            
             // ... use screenManager or other services
 
             base.OnStartup(e);
+            ServiceLocator.Configure();
         }
 
         protected override void OnExit(ExitEventArgs e)

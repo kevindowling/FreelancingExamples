@@ -45,6 +45,8 @@ public class ScreenManager : IScreenManager
 
     public void ShowWindowOnScreen(Window window, int screenIndex)
     {
+        System.Diagnostics.Debug.WriteLine($"Trying to show window on screen: {screenIndex}");
+
         if (screenIndex < 0 || screenIndex >= monitorBoundsList.Count)
             throw new ArgumentOutOfRangeException(nameof(screenIndex));
 
@@ -53,13 +55,20 @@ public class ScreenManager : IScreenManager
 
         window.Left = screenBounds.left / dpiScale.DpiScaleX;
         window.Top = screenBounds.top / dpiScale.DpiScaleY;
-        // Optionally adjust the window size as well
-        // window.Width = desiredWidth / dpiScale.DpiScaleX;
-        // window.Height = desiredHeight / dpiScale.DpiScaleY;
+
+        // Set the window size to match the screen's size
+        window.Width = (screenBounds.right - screenBounds.left) / dpiScale.DpiScaleX;
+        window.Height = (screenBounds.bottom - screenBounds.top) / dpiScale.DpiScaleY;
+
+
+       
 
         window.Show();
         screenWindowMap[screenIndex] = window;
+
+
     }
+
 
 
     public void ShowWindowOnNextScreen(Window window)
