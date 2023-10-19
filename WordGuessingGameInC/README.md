@@ -25,7 +25,7 @@ This is a simple word guessing game written in C. The game selects a word from a
 
 ### Compilation
 
-To compile the program, navigate to the directory containing the `main.c` file in your terminal and run:
+To compile the program, navigate to the directory containing the `wordGuesser.c` file in your terminal and run:
 
 ```sh
-gcc main.c -o wordguess
+gcc wordGuesser.c -o wordguess
