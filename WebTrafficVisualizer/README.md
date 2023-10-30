@@ -8,7 +8,7 @@ This project provides a visual representation of traffic to a site using data fr
 ## Features
 
 - Parses nginx access log to extract relevant traffic data.
-- Uses geolocation services to determine the origin of traffic.
+- Uses geolocation services to determine the origin of traffic (ip-api.com).
 - Frontend visualization using D3.js to display the flow of traffic on a world map.
 - Backend implemented using Flask to serve traffic data to the frontend.
 
@@ -43,7 +43,7 @@ python app.py
 - **Frontend**:
   - `index.html`: Main HTML file that includes links to styles and scripts.
   - `appCaller.js`: Fetches traffic data from the backend.
-  - `slider.js`: Implements the time range slider.
+  - `slider.js`: Implements the time range slider (Still in development).
   - `mapDrawer.js`: Renders the world map and visualizes traffic links and nodes using D3.js.
 
 - **Backend**:
