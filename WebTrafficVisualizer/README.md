@@ -1,6 +1,9 @@
-# Traffic to My Site Visualization
+# Site Traffic Visualization
 
 This project provides a visual representation of traffic to a site using data from an nginx access log. It visualizes the geographic origin of the requests and how they interact with the server.
+
+![Traffic Map](Capture.PNG)
+
 
 ## Features
 
