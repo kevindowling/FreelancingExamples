@@ -38,7 +38,7 @@ function linkPath(d) {
 }
 
 
-
+// [TODO] Replace with slider dates
 loadTrafficData('20/Oct/2023:00:00:00 +0000', '20/Oct/2023:23:59:59 +0000')
     .then(data => {
         var nodeById = new Map(data.nodes.map(node => [node.id, node]));
