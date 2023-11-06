@@ -1,6 +1,6 @@
 # Site Traffic Visualization
 
-This project provides a visual representation of traffic to a site using data from an nginx access log. It visualizes the geographic origin of the requests and how they interact with the server.
+This project provides a visual representation of traffic to a site using data from its nginx access log. It visualizes the geographic origin of the requests and how they interact with the server.
 
 ![Traffic Map](Capture.PNG)
 
@@ -9,7 +9,7 @@ This project provides a visual representation of traffic to a site using data fr
 
 - Parses nginx access log to extract relevant traffic data.
 - Uses geolocation services to determine the origin of traffic (ip-api.com).
-- Frontend visualization using D3.js to display the flow of traffic on a world map.
+- Uses D3.js to display the flow of traffic on a world map.
 - Backend implemented using Flask to serve traffic data to the frontend.
 
 ## Prerequisites
